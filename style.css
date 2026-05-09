@@ -1,121 +1,72 @@
 :root {
-    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    --secondary-gradient: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
-    --glass-bg: rgba(255, 255, 255, 0.04);
-    --border-glass: rgba(255, 255, 255, 0.12);
+    --bg-gradient: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --accent: #3498db;
+    --shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background: #050505; /* Deep black for better contrast */
-    height: 100vh;
+    background: var(--bg-gradient);
+    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-/* Dynamic Background Blobs */
-.bg-container {
-    position: absolute;
+.profile-container {
     width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.blob {
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.45;
-    animation: moveBlobs 25s infinite alternate ease-in-out;
-}
-
-.shape-1 { top: -15%; left: -10%; background: var(--primary-gradient); }
-.shape-2 { bottom: -15%; right: -10%; background: var(--secondary-gradient); animation-delay: -5s; }
-
-@keyframes moveBlobs {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(150px, 80px) scale(1.1); }
-}
-
-/* Glass Card Design */
-.card-container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 380px;
-}
-
-.glass-body {
-    background: var(--glass-bg);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid var(--border-glass);
-    border-radius: 32px;
-    padding: 45px 30px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 40px 25px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
     text-align: center;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
 }
 
-.user-avatar {
+.avatar-wrapper {
     width: 120px;
     height: 120px;
+    margin: 0 auto 20px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 24px;
-    object-fit: cover;
+    border: 4px solid white;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-h1 { color: #fff; font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; }
+.avatar { width: 100%; height: 100%; object-fit: cover; }
 
-.role-badge {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    margin-bottom: 35px;
-    letter-spacing: 0.5px;
-}
+.name { font-size: 1.5rem; margin-bottom: 5px; color: #1a1a1a; letter-spacing: 1px; }
 
-/* Buttons */
-.cta-group { display: flex; flex-direction: column; gap: 18px; }
+.bio { font-size: 0.9rem; color: #555; margin-bottom: 30px; }
 
-.btn-primary {
-    background: #fff;
-    color: #000;
+.links-wrapper { display: flex; flex-direction: column; gap: 15px; }
+
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 16px;
-    border-radius: 16px;
+    background: var(--card-bg);
     text-decoration: none;
+    color: var(--text-color);
     font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
 }
 
-.btn-primary:hover { 
+.link-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-.secondary-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.link-item .icon { margin-right: 12px; font-size: 1.2rem; }
 
-.btn-glass {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    padding: 14px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    border: 1px solid var(--border-glass);
-    transition: 0.3s;
-}
-
-.btn-glass:hover { background: rgba(255, 255, 255, 0.15); }
-
-.card-footer { margin-top: 35px; color: rgba(255, 255, 255, 0.3); font-size: 0.75rem; }
+.footer { margin-top: 30px; font-size: 0.75rem; color: #777; }
